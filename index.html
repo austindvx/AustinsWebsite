@@ -9,28 +9,45 @@
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
 </head>
 <body>
-  <header>
-    <h1>Austin's Website</h1>
-  </header>
+    <section id="intro-wrapper">
+        <div id="cube-container"></div>
+        <section id="terminal">
+            <div id="terminal-output"></div>
+            <div id="terminal-input" style="display: none;">
+            <span>> </span><input type="text" id="password-input" autofocus />
+            </div>
+            <span id="cursor">|</span>
+        </section>
+    </section>
 
-  <nav>
-    <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="projects.html">Projects</a></li>
-      <li><a href="media.html">Media</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-  </nav>
+    <div id="site-content" style="display: none;">
+        <header>
+            <h1>Austin's Website</h1>
+        </header>
 
-  <main>
+        <nav>
+            <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="projects.html">Projects</a></li>
+            <li><a href="media.html">Media</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
 
-  </main>  
+        <main>
+            <section id="terminal">
+                <p id="terminal-text"></p>
+                <span id="cursor">|</span>
+            </section>
+        </main>  
 
-  <footer>
-    <p>&copy; 2025 Austin</p>
-  </footer>
+        <footer>
+            <p>&copy; 2025 Austin</p>
+        </footer>
+    </div>
 
   <script src="script.js"></script>
+
 </body>
 </html>

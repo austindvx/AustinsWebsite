@@ -71,10 +71,56 @@
   }
   
   /* === Terminal Intro (Optional) === */
+  
+  #intro-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh; /* ensures full height */
+    justify-content: center; /* centers vertically */
+  }
+  
   #terminal {
     font-family: 'Courier New', Courier, monospace;
     background-color: #000;
     color: #39FF14;
-    padding: 1rem;
+    padding: 2rem;
+    border: 2px solid #39FF14;
+    max-width: 600px;
+    margin: 2rem auto;
   }
   
+  #terminal-input input {
+    background: none;
+    border: none;
+    color: #39FF14;
+    font-family: inherit;
+    outline: none;
+  }
+  
+  #cursor {
+    display: inline-block;
+    font-weight: bold;
+  }
+  
+  #site-content {
+    opacity: 0;
+    transition: opacity 1s ease;
+  }
+  
+  #site-content.show {
+    opacity: 1;
+  }
+  
+  /* Cube container above the terminal */
+  #cube-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem auto;
+  }
+  
+  #cube-container canvas {
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }

@@ -9,13 +9,20 @@ const camera = new THREE.PerspectiveCamera(
 
 const renderer = new THREE.WebGLRenderer();
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+const cubeContainer = document.getElementById('cube-container');
+cubeContainer.appendChild(renderer.domElement);
+
 
 // Create a cube
 const geometry = new THREE.BoxGeometry();
 const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, wireframe: true });
 const cube = new THREE.Mesh(geometry, material);
 scene.add(cube);
+const width = 400;
+const height = 400;
+
+renderer.setSize(width, height);
+
 
 camera.position.z = 5;
 
@@ -38,3 +45,88 @@ window.addEventListener('resize', () => {
 
   renderer.setSize(window.innerWidth, window.innerHeight);
 });
+
+
+// === Terminal Typing Effect ===
+
+const bootLines = [
+    "> Initializing secure uplink...",
+    "> Establishing encrypted connection...",
+    "> Verifying credentials...",
+    "> Access protocol loaded.",
+    "> Ready for authentication.",
+    "> Loading surveillance feeds...",
+    "> Checking external threats...",
+    "> Uplink stable.",
+    "> Enter Password:"
+    
+  ];
+  
+  const terminalOutput = document.getElementById('terminal-output');
+  const terminalInput = document.getElementById('terminal-input');
+  const passwordInput = document.getElementById('password-input');
+  const cursor = document.getElementById('cursor');
+  const siteContent = document.getElementById('site-content');
+  const terminalSection = document.getElementById('terminal');
+  
+  const fakePassword = "agent007";  // Replace with your fake password
+  
+  let lineIndex = 0;
+  
+  function typeLine() {
+    if (lineIndex < bootLines.length) {
+      const line = bootLines[lineIndex];
+      let charIndex = 0;
+      const lineElement = document.createElement('p');
+  
+      terminalOutput.appendChild(lineElement);
+  
+      function typeChar() {
+        if (charIndex < line.length) {
+          lineElement.textContent += line.charAt(charIndex);
+          charIndex++;
+          setTimeout(typeChar, 50);
+        } else {
+          lineIndex++;
+          setTimeout(typeLine, 500);
+        }
+      }
+  
+      typeChar();
+    } else {
+      // Finished booting, show password input
+      cursor.style.display = 'none';
+      terminalInput.style.display = 'block';
+      passwordInput.focus();
+    }
+  }
+  
+  typeLine();
+  
+  // Blink cursor only during boot-up
+  setInterval(() => {
+    if (cursor.style.display !== 'none') {
+      cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+    }
+  }, 500);
+  
+  // Listen for password submit
+  passwordInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
+      if (passwordInput.value.trim() === fakePassword) {
+        unlockSite();
+      } else {
+        const error = document.createElement('p');
+        error.textContent = "> Access denied. Try again.";
+        terminalOutput.appendChild(error);
+        passwordInput.value = "";
+      }
+    }
+  });
+  
+  function unlockSite() {
+    terminalSection.style.display = 'none';
+    siteContent.style.display = 'block';
+    siteContent.classList.add('show');
+  }
+  
