@@ -2,7 +2,7 @@
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   75,
-  1, // Square aspect ratio for cube overlay
+  1,
   0.1,
   1000
 );
@@ -34,7 +34,7 @@ function animate() {
 
 animate();
 
-// === Terminal Typing & Unlock ===
+// === Terminal Boot & Unlock ===
 const bootLines = [
   "> Initializing secure uplink...",
   "> Establishing encrypted connection...",
@@ -81,16 +81,14 @@ function typeLine() {
   }
 }
 
-typeLine();
+typeLine(); // 🔑 Ensures boot sequence starts!
 
-// Blink cursor during boot-up
 setInterval(() => {
   if (cursor.style.display !== 'none') {
     cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
   }
 }, 500);
 
-// Handle password input
 passwordInput.addEventListener('keypress', function (e) {
   if (e.key === 'Enter') {
     if (passwordInput.value.trim() === fakePassword) {
@@ -109,6 +107,5 @@ function unlockSite() {
   siteContent.style.display = 'block';
   siteContent.classList.add('show');
 
-  // Hide cube overlay on unlock
-  cubeOverlay.style.display = 'none';
+  cubeOverlay.style.display = 'none'; // Hide cube after unlock
 }
