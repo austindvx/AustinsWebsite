@@ -2,52 +2,58 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
+  <title>Agent Austin OS</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Include Three.js from a CDN -->
-    <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
 </head>
 <body>
-    <section id="intro-wrapper">
-        <div id="cube-container"></div>
-        <section id="terminal">
-            <div id="terminal-output"></div>
-            <div id="terminal-input" style="display: none;">
-            <span>> </span><input type="text" id="password-input" autofocus />
-            </div>
-            <span id="cursor">|</span>
-        </section>
+  <!-- 🧊 Cube Overlay -->
+  <div id="cube-overlay"></div>
+
+  <!-- 🔐 Intro Wrapper -->
+  <section id="intro-wrapper">
+    <section id="terminal">
+      <div id="terminal-output"></div>
+      <div id="terminal-input" style="display: none;">
+        <span>> </span><input type="text" id="password-input" autofocus />
+      </div>
+      <span id="cursor">|</span>
     </section>
+  </section>
 
-    <div id="site-content" style="display: none;">
-        <header>
-            <h1>Austin's Website</h1>
-        </header>
+  <!-- 🗂️ Spy OS Home Page Content -->
+  <div id="site-content" style="display: none;">
+    <header>
+      <h1>AGENT AUSTIN OS v1.0</h1>
+      <p>Status: Connection Secure | Uplink Active</p>
+    </header>
 
-        <nav>
-            <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="projects.html">Projects</a></li>
-            <li><a href="media.html">Media</a></li>
-            <li><a href="contact.html">Contact</a></li>
-            </ul>
-        </nav>
+    <main id="spy-hub">
+      <div class="widget-grid">
+        <a href="about.html" class="widget">
+          <h2>About</h2>
+          <p>Agent Profile</p>
+        </a>
+        <a href="projects.html" class="widget">
+          <h2>Projects</h2>
+          <p>Sandbox & Experiments</p>
+        </a>
+        <a href="media.html" class="widget">
+          <h2>Media</h2>
+          <p>Visual Intelligence</p>
+        </a>
+        <a href="contact.html" class="widget">
+          <h2>Contact</h2>
+          <p>Secure Channel</p>
+        </a>
+      </div>
+    </main>
 
-        <main>
-            <section id="terminal">
-                <p id="terminal-text"></p>
-                <span id="cursor">|</span>
-            </section>
-        </main>  
+    <footer>
+      <p>&copy; 2025 Agent Austin</p>
+    </footer>
+  </div>
 
-        <footer>
-            <p>&copy; 2025 Austin</p>
-        </footer>
-    </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.1/build/three.min.js"></script>
   <script src="script.js"></script>
-
 </body>
 </html>
