@@ -2,39 +2,25 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Agent Austin OS</title>
+  <title>Agent Austin Boot</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- 🗂️ Spy OS Home Page Content -->
-  <header>
-    <h1>AGENT AUSTIN OS v1.0</h1>
-    <p>Status: Connection Secure | Uplink Active</p>
-  </header>
-
-  <main id="spy-hub">
-    <div class="widget-grid">
-      <a href="about.html" class="widget">
-        <h2>About</h2>
-        <p>Agent Profile</p>
-      </a>
-      <a href="projects.html" class="widget">
-        <h2>Projects</h2>
-        <p>Sandbox & Experiments</p>
-      </a>
-      <a href="media.html" class="widget">
-        <h2>Media</h2>
-        <p>Visual Intelligence</p>
-      </a>
-      <a href="contact.html" class="widget">
-        <h2>Contact</h2>
-        <p>Secure Channel</p>
-      </a>
+  <section id="intro-wrapper">
+    <!-- 🧊 TV Frame Container -->
+    <div class="tv-frame">
+      <div class="tv-content">
+        <section id="terminal">
+          <div id="terminal-output"></div>
+          <div id="terminal-input" style="display: none;">
+            <span>> </span><input type="text" id="password-input" autofocus />
+          </div>
+          <span id="cursor">|</span>
+        </section>
+      </div>
     </div>
-  </main>
+  </section>
 
-  <footer>
-    <p>&copy; 2025 Agent Austin</p>
-  </footer>
+  <script src="intro.js"></script>
 </body>
 </html>

@@ -1,93 +1,148 @@
-/* === Global Reset & Base === */
+/* === Base Reset === */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: #000; /* Spy computer black background */
-    color: #39FF14;         /* Matrix green text */
-    font-family: 'Courier New', Courier, monospace; /* Terminal vibe */
-    line-height: 1.5;
-  }
-  
-  /* === Links === */
-  a {
-    color: #39FF14;
-    text-decoration: none;
-  }
-  
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  /* === Header === */
-  header {
-    background-color: #111; /* Slightly lighter black for panels */
-    color: #39FF14;
-    padding: 1rem;
-    text-align: center;
-    border-bottom: 2px solid #39FF14; /* Command-line panel feel */
-  }
-  
-  /* === Nav Bar === */
-  nav {
-    background-color: #111;
-    padding: 1rem;
-    border-bottom: 2px solid #39FF14;
-  }
-  
-  nav ul {
-    list-style: none;
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-  }
-  
-  nav a {
-    color: #39FF14;
-  }
-  
-  nav a:hover {
-    text-decoration: underline;
-  }
-  
-  /* === Main Content === */
-  main {
-    padding: 2rem;
-  }
-  
-  /* === Footer === */
-  footer {
-    background-color: #111;
-    color: #39FF14;
-    text-align: center;
-    padding: 1rem;
-    border-top: 2px solid #39FF14;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-  }
-  
-  /* === Terminal Intro (Optional) === */
-  
-  #intro-wrapper {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  color: #39FF14;
+  font-family: 'Courier New', Courier, monospace;
+  line-height: 1.5;
+}
+
+/* === Intro Wrapper === */
+#intro-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    min-height: 100vh; /* ensures full height */
-    justify-content: center; /* centers vertically */
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
   }
   
+
+/* === Terminal === */
+#terminal {
+  background-color: #000;
+  color: #39FF14;
+  padding: 2rem;
+  border: 2px solid #39FF14;
+  max-width: 600px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  white-space: pre-wrap;
+}
+
+#terminal-output p {
+  margin: 0.5rem 0;
+}
+
+#terminal-input input {
+  background: none;
+  border: none;
+  color: #39FF14;
+  font-family: inherit;
+  outline: none;
+}
+
+#cursor {
+  display: inline-block;
+  font-weight: bold;
+}
+
+/* === Spy Hub === */
+#spy-hub {
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.widget-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+  margin-top: 2rem;
+}
+
+.widget {
+  border: 2px solid #39FF14;
+  padding: 1.5rem;
+  background-color: rgba(0, 0, 0, 0.7);
+  text-decoration: none;
+  color: #39FF14;
+  width: 200px;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.widget:hover {
+  box-shadow: 0 0 20px #39FF14;
+  transform: translateY(-5px);
+}
+
+.widget h2 {
+  margin-bottom: 0.5rem;
+}
+
+.widget p {
+  font-size: 0.8rem;
+}
+
+/* === Footer === */
+footer {
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #39FF14;
+}
+
+/* === TV Frame === */
+.tv-frame {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+    max-width: 1600px;
+    height: 1200px;
+    transform: translateY(-10%);
+  }
+  
+  .tv-frame::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: url('assets/frames/sony-tv2.png') no-repeat center center;
+    background-size: contain;
+    z-index: 2;
+    pointer-events: none;
+  }
+  
+  .tv-content {
+    position: absolute;
+    z-index: 1;
+    /* Position the screen cutout area inside the TV */
+    top: 20%;      /* adjust based on your PNG */
+    left: 27%;     /* adjust based on your PNG */
+    width: 76%;    /* adjust width of the screen area */
+    height: 60%;   /* adjust height of the screen area */
+    background: #000;
+    overflow: hidden;
+  }
+  
+  
   #terminal {
-    font-family: 'Courier New', Courier, monospace;
-    background-color: #000;
+    background: none;
+    border: none;
     color: #39FF14;
-    padding: 2rem;
-    border: 2px solid #39FF14;
-    max-width: 600px;
-    margin: 2rem auto;
+    font-family: 'Courier New', Courier, monospace;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    padding: 1rem;
+  }
+  
+  #terminal-output p {
+    margin: 0.3rem 0;
   }
   
   #terminal-input input {
@@ -103,24 +158,3 @@
     font-weight: bold;
   }
   
-  #site-content {
-    opacity: 0;
-    transition: opacity 1s ease;
-  }
-  
-  #site-content.show {
-    opacity: 1;
-  }
-  
-  /* Cube container above the terminal */
-  #cube-container {
-    display: flex;
-    justify-content: center;
-    margin: 2rem auto;
-  }
-  
-  #cube-container canvas {
-    display: block;
-    max-width: 100%;
-    height: auto;
-  }
