@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Agent Austin Dashboard</title>
+  <title>Agent Austin OS Dashboard</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -13,19 +13,43 @@
 
   <main id="spy-hub">
     <div class="widget-grid">
-      <!-- Example framed Media widget -->
-      <div class="tv-frame">
-        <div class="tv-content">
-          <iframe width="300" height="200"
-            src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-            title="YouTube video"
-            frameborder="0"
-            allowfullscreen>
-          </iframe>
-        </div>
+      <!-- About Widget -->
+      <a href="about.html" class="widget">
+        <h2>About</h2>
+        <p>Agent Profile</p>
+      </a>
+
+      <!-- Projects Widget -->
+      <a href="projects.html" class="widget">
+        <h2>Projects</h2>
+        <p>Sandbox & Experiments</p>
+      </a>
+
+      <!-- Media Feed Widget -->
+      <div class="widget">
+        <h2>Media Feed</h2>
+        <!-- Example: framed TV embed can go here -->
+        <iframe width="100%" height="200"
+          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
+          title="YouTube video"
+          frameborder="0"
+          allowfullscreen>
+        </iframe>
       </div>
 
-      <!-- Add your other widgets here -->
+      <!-- System Status Widget -->
+      <div class="widget">
+        <h2>System Status</h2>
+        <p>[ UPLINK ACTIVE ]</p>
+        <p>[ CONNECTION SECURE ]</p>
+        <p>[ AGENT ONLINE ]</p>
+      </div>
+
+      <!-- Contact Widget -->
+      <a href="contact.html" class="widget">
+        <h2>Contact</h2>
+        <p>Secure Channel</p>
+      </a>
     </div>
   </main>
 
