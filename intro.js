@@ -1,4 +1,3 @@
-// === Terminal Boot & Redirect ===
 const bootLines = [
     "> Initializing secure uplink...",
     "> Establishing encrypted connection...",
@@ -8,11 +7,7 @@ const bootLines = [
   ];
   
   const terminalOutput = document.getElementById('terminal-output');
-  const terminalInput = document.getElementById('terminal-input');
-  const passwordInput = document.getElementById('password-input');
   const cursor = document.getElementById('cursor');
-  
-  const fakePassword = "agent007";
   
   let lineIndex = 0;
   
@@ -37,34 +32,47 @@ const bootLines = [
   
       typeChar();
     } else {
-      cursor.style.display = 'none';
-      terminalInput.style.display = 'block';
-      passwordInput.focus();
+      // Auto-type fake password
+      typeFakePassword();
     }
   }
   
-  typeLine();
+  function typeFakePassword() {
+    const inputLine = document.createElement('p');
+    inputLine.textContent = "> Enter password: ";
+    terminalOutput.appendChild(inputLine);
   
-  setInterval(() => {
-    if (cursor.style.display !== 'none') {
-      cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
-    }
-  }, 500);
+    let password = "agent007";
+    let index = 0;
   
-  passwordInput.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
-      if (passwordInput.value.trim() === fakePassword) {
-        unlockAndRedirect();
+    const typed = document.createElement('span');
+    inputLine.appendChild(typed);
+  
+    function typeChar() {
+      if (index < password.length) {
+        typed.textContent += password.charAt(index);
+        index++;
+        setTimeout(typeChar, 150);
       } else {
-        const error = document.createElement('p');
-        error.textContent = "> Access denied. Try again.";
-        terminalOutput.appendChild(error);
-        passwordInput.value = "";
+        const granted = document.createElement('p');
+        granted.textContent = "> Access granted. Welcome, Agent.";
+        terminalOutput.appendChild(granted);
+  
+        setTimeout(unlockAndRedirect, 1500);
       }
     }
-  });
+  
+    typeChar();
+  }
   
   function unlockAndRedirect() {
     window.location.href = "dashboard.html";
   }
+  
+  // Blink cursor
+  setInterval(() => {
+    cursor.style.opacity = cursor.style.opacity === '0' ? '1' : '0';
+  }, 500);
+  
+  typeLine();
   

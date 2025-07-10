@@ -2,59 +2,80 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Agent Austin OS Dashboard</title>
+  <title>Agent Austin Ops Carousel</title>
   <link rel="stylesheet" href="style.css" />
+
+  <!-- Swiper CSS CDN -->
+  <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
+  />
 </head>
 <body>
-  <header>
-    <h1>AGENT AUSTIN OS v1.0</h1>
-    <p>Status: Connection Secure | Uplink Active</p>
-  </header>
+  <main id="dashboard-carousel">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
 
-  <main id="spy-hub">
-    <div class="widget-grid">
-      <!-- About Widget -->
-      <a href="about.html" class="widget">
-        <h2>About</h2>
-        <p>Agent Profile</p>
-      </a>
+        <!-- Payphone Slide -->
+        <div class="swiper-slide">
+          <a href="contact.html">
+            <img src="assets/frames/payphone-frame.png" alt="Contact Payphone">
+          </a>
+        </div>
 
-      <!-- Projects Widget -->
-      <a href="projects.html" class="widget">
-        <h2>Projects</h2>
-        <p>Sandbox & Experiments</p>
-      </a>
+        <!-- Briefcase Slide -->
+        <div class="swiper-slide">
+          <a href="projects.html">
+            <img src="assets/frames/briefcase-frame.png" alt="Projects Briefcase">
+          </a>
+        </div>
 
-      <!-- Media Feed Widget -->
-      <div class="widget">
-        <h2>Media Feed</h2>
-        <!-- Example: framed TV embed can go here -->
-        <iframe width="100%" height="200"
-          src="https://www.youtube.com/embed/dQw4w9WgXcQ"
-          title="YouTube video"
-          frameborder="0"
-          allowfullscreen>
-        </iframe>
+        <!-- TV Slide -->
+        <div class="swiper-slide">
+          <a href="media.html">
+            <img src="assets/frames/sony-tv.png" alt="Media TV">
+          </a>
+        </div>
+
+        <!-- About Slide -->
+        <div class="swiper-slide">
+          <a href="about.html">
+            <img src="assets/frames/placeholder.png" alt="About Placeholder">
+          </a>
+        </div>
+
       </div>
 
-      <!-- System Status Widget -->
-      <div class="widget">
-        <h2>System Status</h2>
-        <p>[ UPLINK ACTIVE ]</p>
-        <p>[ CONNECTION SECURE ]</p>
-        <p>[ AGENT ONLINE ]</p>
-      </div>
-
-      <!-- Contact Widget -->
-      <a href="contact.html" class="widget">
-        <h2>Contact</h2>
-        <p>Secure Channel</p>
-      </a>
+      <!-- Navigation Arrows -->
+      <div class="swiper-button-next"></div>
+      <div class="swiper-button-prev"></div>
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Agent Austin</p>
-  </footer>
+  <!-- Swiper JS CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+  <script>
+    const swiper = new Swiper('.swiper-container', {
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loop: false,
+      spaceBetween: 200,
+      speed:600,
+      grabCursor: true,
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+      effect: 'coverflow',
+      coverflowEffect: {
+        rotate: 0,
+        stretch: 0,
+        depth: 300,
+        modifier: 1,
+        slideShadows: false,
+      },
+    });
+  </script>
 </body>
 </html>
