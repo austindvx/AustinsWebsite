@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <title>Agent Austin Ops Carousel</title>
+  <title>Austin Devereux Jr. — Portfolio</title>
   <link rel="stylesheet" href="style.css" />
 
   <!-- Swiper CSS CDN -->
@@ -12,38 +12,45 @@
   />
 </head>
 <body>
+  <!-- === Floating Transparent Header === -->
+  <header id="site-header">
+    <button class="header-btn" id="mode-toggle">Light/Dark</button>
+    <h1 id="site-title">AUSTIN DEVEREUX JR.</h1>
+    <button class="header-btn" id="logout-btn">LOG OUT</button>
+  </header>
+
+  <!-- === Carousel === -->
   <main id="dashboard-carousel">
     <div class="swiper-container">
       <div class="swiper-wrapper">
-
-        <!-- Payphone Slide -->
+        
+        <!-- About Slide -->
         <div class="swiper-slide">
-          <a href="contact.html">
-            <img src="assets/frames/payphone-frame.png" alt="Contact Payphone">
+          <a href="about.html">
+            <img src="assets/frames/folder-frame.png" alt="About Folder">
           </a>
         </div>
 
-        <!-- Briefcase Slide -->
+        <!-- Projects Slide -->
         <div class="swiper-slide">
           <a href="projects.html">
             <img src="assets/frames/briefcase-frame.png" alt="Projects Briefcase">
           </a>
         </div>
 
-        <!-- TV Slide -->
+        <!-- Media Slide -->
         <div class="swiper-slide">
           <a href="media.html">
-            <img src="assets/frames/sony-tv.png" alt="Media TV">
+            <img src="assets/frames/sony-tv-media-frame.png" alt="Media TV">
           </a>
         </div>
 
-        <!-- About Slide -->
+        <!-- Contact Slide -->
         <div class="swiper-slide">
-          <a href="about.html">
-            <img src="assets/frames/placeholder.png" alt="About Placeholder">
+          <a href="contact.html">
+            <img src="assets/frames/payphone-frame.png" alt="Contact Payphone">
           </a>
         </div>
-
       </div>
 
       <!-- Navigation Arrows -->
@@ -51,6 +58,11 @@
       <div class="swiper-button-prev"></div>
     </div>
   </main>
+
+  <!-- === Footer === -->
+  <footer id="site-footer">
+    <p>&copy; 2025 Austin Devereux Jr.</p>
+  </footer>
 
   <!-- Swiper JS CDN -->
   <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -61,7 +73,7 @@
       slidesPerView: 'auto',
       loop: false,
       spaceBetween: 200,
-      speed:600,
+      speed: 600,
       grabCursor: true,
       navigation: {
         nextEl: '.swiper-button-next',
@@ -75,6 +87,17 @@
         modifier: 1,
         slideShadows: false,
       },
+    });
+
+    // === Light/Dark Mode Toggle ===
+    const modeToggle = document.getElementById('mode-toggle');
+    modeToggle.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+    });
+
+    // === Log Out (replay intro) ===
+    document.getElementById('logout-btn').addEventListener('click', () => {
+      window.location.href = "index.html";
     });
   </script>
 </body>

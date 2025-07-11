@@ -6,20 +6,88 @@
   }
   
   body {
+    background-color: #ffffff;
+    font-family: 'Homoarak', sans-serif;
+    transition: background 0.3s, color 0.3s;
+  }
+  
+  /* === Custom Y2K Font === */
+  @font-face {
+    font-family: 'Homoarak';
+    src: url('assets/fonts/HOMOARAK.TTF') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  /* === Floating Transparent Header === */
+  #site-header {
+    position: fixed;
+    top: 0; left: 0; width: 100%;
+    z-index: 999;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding: 0 2rem;
+    background: transparent;
+    box-shadow: none;
+    border-bottom: none;
+  }
+  
+  #site-title {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 2rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #000;
+  }
+  
+  .header-btn {
+    background: transparent;
+    border: 2px solid #000;
+    padding: 0.5rem 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .header-btn:hover {
+    background: #000;
+    color: #fff;
+  }
+  
+  /* === Light/Dark Mode === */
+  body.dark-mode {
     background-color: #000;
-    background-image: url('assets/textures/tars-steel-panels.png');
-    background-size: cover;
-    background-repeat: repeat;
     color: #00F5CC;
-    font-family: 'Courier New', Courier, monospace;
   }
   
-  /* === Intro Boot Screen: Override Background === */
+  body.dark-mode #site-title {
+    color: #00F5CC;
+  }
+  
+  body.dark-mode .header-btn {
+    border-color: #00F5CC;
+    color: #00F5CC;
+  }
+  
+  body.dark-mode .header-btn:hover {
+    background: #00F5CC;
+    color: #000;
+  }
+  
+  #dashboard-carousel {
+    margin-top: 100px;
+  }
+  
+  /* === Intro Boot Screen === */
   body.intro {
-    background: #000; /* pure black for boot screen */
+    background: #000;
   }
   
-  /* === Intro Wrapper === */
   #intro-wrapper {
     display: flex;
     flex-direction: column;
@@ -29,11 +97,10 @@
     overflow: hidden;
   }
   
-  /* === Responsive TV Frame === */
   .tv-frame {
     position: relative;
     width: 100%;
-    max-width: 1600px; /* your TV PNG's natural width */
+    max-width: 1600px;
     margin: 0 auto;
     transform: translateY(-10%);
   }
@@ -41,7 +108,7 @@
   .tv-frame-inner {
     position: relative;
     width: 100%;
-    padding-top: 75%; /* Aspect ratio (4:3 = 75%) */
+    padding-top: 75%;
   }
   
   .tv-frame::before {
@@ -57,7 +124,7 @@
   .tv-content {
     position: absolute;
     z-index: 1;
-    top: 22%;   /* your final fixed values! */
+    top: 22%;
     left: 27%;
     width: 46%;
     height: 46%;
@@ -71,7 +138,6 @@
     }
   }
   
-  /* === Terminal === */
   #terminal {
     background: none;
     border: none;
@@ -87,20 +153,11 @@
     margin: 0.3rem 0;
   }
   
-  #terminal-input input {
-    background: none;
-    border: none;
-    color: #00F5CC;
-    font-family: inherit;
-    outline: none;
-  }
-  
   #cursor {
     display: inline-block;
     font-weight: bold;
   }
   
-  /* === Spy Hub === */
   #spy-hub {
     text-align: center;
     padding: 4rem 2rem;
@@ -131,29 +188,9 @@
     transform: translateY(-5px);
   }
   
-  /* === Remove old pseudo-rivets === */
-  /* .widget::before,
-  .widget::after {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background: radial-gradient(circle, #888 40%, #000 100%);
-    border-radius: 50%;
-  }
-  .widget::before {
-    top: -8px;
-    left: -8px;
-  }
-  .widget::after {
-    top: -8px;
-    right: -8px;
-  } */
-  
-  /* === Screws === */
   .screw {
     position: absolute;
-    width: 24px;  /* adjust screw size */
+    width: 24px;
     height: 24px;
     background-size: contain;
     background-repeat: no-repeat;
@@ -184,168 +221,52 @@
     background-image: url('assets/bolts/screw3.png');
   }
   
-  /* === Dashboard Ops Room === */
-#dashboard-room {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
-  }
-  
-  /* === Gadgets === */
-  .gadget {
-    position: absolute;
-    display: block;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .gadget img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    pointer-events: none;
-  }
-  
-  .gadget:hover {
-    transform: scale(1.02);
-    box-shadow: 0 0 40px rgba(0, 255, 204, 0.4);
-  }
-  
-  /* === Individual Gadget Positions === */
-  .gadget-payphone {
-    top: 20%;
-    left: 10%;
-    width: 200px;
-  }
-  
-  .gadget-briefcase {
-    bottom: 15%;
-    right: 10%;
-    width: 250px;
-  }
-  
-  .gadget-tv {
-    top: 25%;
-    right: 20%;
-    width: 300px;
-  }
-  
-  .gadget-about {
-    bottom: 20%;
-    left: 25%;
-    width: 150px;
-  }
-  
-  /* === Spy Hub Widgets (Legacy — optional) === */
-  #spy-hub {
-    text-align: center;
-    padding: 4rem 2rem;
-  }
-  
-  .widget-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-    justify-items: center;
-    margin-top: 2rem;
-    padding: 2rem;
-  }
-  
-  .widget {
-    position: relative;
-    border: 4px solid #555;
-    background: linear-gradient(145deg, #222, #333);
-    padding: 2rem;
-    color: #00F5CC;
-    text-decoration: none;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    box-shadow: inset 0 0 20px #000, 0 0 20px #00F5CC;
-  }
-  
-  .widget:hover {
-    box-shadow: inset 0 0 20px #000, 0 0 40px #00F5CC;
-    transform: translateY(-5px);
-  }
-  
-  .widget::before,
-  .widget::after {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    background: radial-gradient(circle, #888 40%, #000 100%);
-    border-radius: 50%;
-  }
-  
-  .widget::before {
-    top: -8px;
-    left: -8px;
-  }
-  
-  .widget::after {
-    top: -8px;
-    right: -8px;
-  }
-  
-  .widget h2 {
-    margin-bottom: 0.5rem;
-  }
-  
-  .widget p {
-    font-size: 0.8rem;
-  }
-
-  /* === Footer === */
-  footer {
-    text-align: center;
-    padding: 1rem;
-    border-top: 2px solid #00F5CC;
-  }
-
-  /* === Ops Room Carousel === */
+/* === Dashboard Carousel === */
 #dashboard-carousel {
     width: 100%;
     height: 100vh;
-    background: url('assets/textures/tars-steel-panels.png') repeat;
     display: flex;
-    align-items: center;
+    align-items: flex-start;   /* shifts to the top */
     justify-content: center;
+    padding-top: 120px;        /* optional: add spacing below header */
   }
   
+  /* === Swiper Container === */
   .swiper-container {
     width: 90%;
     max-width: 1200px;
   }
   
+  /* === Swiper Slide Flex Center === */
   .swiper-slide {
-    width: 250px; /* Adjust to match gadget size */
-    height: auto;
-    transition: transform 0.3s ease;
-  }
-  
-  .swiper-slide img {
-    display: block;
-    width: 100%;
-    height: auto;
-    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   /* === Individual gadget slide sizes === */
-.swiper-slide:nth-child(1) { width: 450px; } /* Payphone */
-.swiper-slide:nth-child(2) { width: 600px; } /* Briefcase */
-.swiper-slide:nth-child(3) { width: 650px; } /* TV */
-.swiper-slide:nth-child(4) { width: 180px; } /* About Placeholder */
-
-@media (max-width: 768px) {
-    .swiper-slide:nth-child(1) { width: 160px; }
-    .swiper-slide:nth-child(2) { width: 220px; }
-    .swiper-slide:nth-child(3) { width: 250px; }
-    .swiper-slide:nth-child(4) { width: 140px; }
+  .swiper-slide:nth-child(1) { width: 500px; height: 400px; } /* Folder */
+  .swiper-slide:nth-child(2) { width: 650px; height: 400px; } /* Briefcase */
+  .swiper-slide:nth-child(3) { width: 600px; height: 400px; } /* TV */
+  .swiper-slide:nth-child(4) { width: 450px; height: 400px; } /* Payphone */
+  
+  /* Responsive sizes for smaller screens */
+  @media (max-width: 768px) {
+    .swiper-slide:nth-child(1) { width: 160px; height: auto; }
+    .swiper-slide:nth-child(2) { width: 220px; height: auto; }
+    .swiper-slide:nth-child(3) { width: 250px; height: auto; }
+    .swiper-slide:nth-child(4) { width: 140px; height: auto; }
   }
-
-  .swiper-slide a {
+  
+  /* === Gadget Images === */
+  .swiper-slide img {
     display: block;
+    height: 100%;   /* Fill slide height! */
+    width: auto;    /* Keep aspect ratio */
+    margin: 0 auto;
+    pointer-events: none;
   }
+  
   
   .swiper-slide:hover {
     transform: scale(1.05);
@@ -356,4 +277,40 @@
     color: #00F5CC;
   }
   
+  #site-footer {
+    text-align: center;
+    padding: 1rem;
+    border-top: 2px solid #000;
+    background: transparent;
+    font-size: 0.8rem;
+    color: #000;
+  }
+  
+  body.dark-mode #site-footer {
+    border-color: #00F5CC;
+    color: #00F5CC;
+  }
+  
+  .media-frame {
+    position: relative;
+    display: block;  /* <a> is block so child video/image stack properly */
+  }
+  
+  .media-frame img {
+    display: block;
+    width: 100%;
+    height: auto;
+    z-index: 2;
+  }
+  
+  .tv-static {
+    position: absolute;
+    top: 24%;    /* Adjust to match your TV screen area */
+    left: 28%;
+    width: 44%;
+    height: 40%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;  /* Clicking goes through to the <a> */
+  }
   

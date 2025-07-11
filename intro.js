@@ -42,7 +42,7 @@ const bootLines = [
     inputLine.textContent = "> Enter password: ";
     terminalOutput.appendChild(inputLine);
   
-    let password = "agent007";
+    let password = "*********";
     let index = 0;
   
     const typed = document.createElement('span');
