@@ -267,6 +267,23 @@
     .swiper-slide:nth-child(4) {
       width: 80vw;  /* fit within viewport width! */
       height: auto; /* keep aspect ratio */
+    }
+  
+    .swiper-slide img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+  
+    #dashboard-carousel {
+      height: auto;   /* let it grow naturally */
+      padding-top: 100px; /* keep headroom under header */
+    }
+  
+    #continue-btn {
+      margin-top: 1rem;
+    }
+  }
   
   #continue-btn {
     margin: 2rem 0;
