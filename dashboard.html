@@ -10,6 +10,8 @@
     rel="stylesheet"
     href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css"
   />
+
+  <script src="dashboard-cli.js" defer></script>
 </head>
 <body>
   <!-- === Floating Transparent Header === -->
@@ -57,7 +59,26 @@
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
     </div>
+    
+    <a href="#dashboard-cli" id="continue-btn">↓ Welcome ↓</a>
   </main>
+
+
+<!-- === CLI Welcome === -->
+<section id="dashboard-cli">
+  <div class="cli-tv-wrapper">
+    <!-- CLI content -->
+    <div class="cli-tv-inner">
+      <div id="cli-output"></div>
+      <span id="cli-cursor">|</span>
+      <div id="back-to-top-btn"></div>
+    </div>
+
+    <!-- TV frame image on top -->
+    <img src="assets/frames/silver-tv-frame.png" alt="CLI TV Frame" class="cli-tv-img">
+  </div>
+
+</section>
 
   <!-- === Footer === -->
   <footer id="site-footer">
@@ -100,5 +121,43 @@
       window.location.href = "index.html";
     });
   </script>
+
+<script type="module">
+  import * as THREE from 'https://cdn.jsdelivr.net/npm/three@0.152.2/build/three.module.js';
+
+  const scene = new THREE.Scene();
+  const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+  const renderer = new THREE.WebGLRenderer({ alpha: true }); // transparent
+  renderer.setSize(100, 100);
+  document.getElementById('back-to-top-btn').appendChild(renderer.domElement);
+
+  const geometry = new THREE.BoxGeometry();
+  const material = new THREE.MeshStandardMaterial({ color: 0x00F5CC });
+  const cube = new THREE.Mesh(geometry, material);
+  scene.add(cube);
+
+  const light = new THREE.PointLight(0xffffff, 1);
+  light.position.set(5, 5, 5);
+  scene.add(light);
+
+  camera.position.z = 3;
+
+  function animate() {
+    requestAnimationFrame(animate);
+    cube.rotation.x += 0.01;
+    cube.rotation.y += 0.01;
+    renderer.render(scene, camera);
+  }
+  animate();
+
+  // Scroll to top on click
+  renderer.domElement.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+</script>
+
 </body>
 </html>

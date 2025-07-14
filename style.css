@@ -223,41 +223,86 @@
   
 /* === Dashboard Carousel === */
 #dashboard-carousel {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: flex-start;   /* shifts to the top */
-    justify-content: center;
-    padding-top: 120px;        /* optional: add spacing below header */
-  }
+  width: 100%;
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 120px; /* for sticky header */
+  box-sizing: border-box;
+}
   
   /* === Swiper Container === */
   .swiper-container {
+    flex: 1;                  /* grow to fill vertical space */
+    display: flex;
+    align-items: center;      /* center slides vertically */
     width: 90%;
     max-width: 1200px;
+    position: relative;       /* needed for arrows */
   }
-  
+  .swiper-wrapper {
+    display: flex;
+  }
   /* === Swiper Slide Flex Center === */
   .swiper-slide {
     display: flex;
     align-items: center;
     justify-content: center;
+    height: 100%;   /* NEW: let each slide grow vertically */
   }
   
   /* === Individual gadget slide sizes === */
-  .swiper-slide:nth-child(1) { width: 500px; height: 400px; } /* Folder */
-  .swiper-slide:nth-child(2) { width: 650px; height: 400px; } /* Briefcase */
-  .swiper-slide:nth-child(3) { width: 600px; height: 400px; } /* TV */
-  .swiper-slide:nth-child(4) { width: 450px; height: 400px; } /* Payphone */
+  .swiper-slide:nth-child(1) { width: 60vw; height: 60vh; } /* Folder */
+  .swiper-slide:nth-child(2) { width: 60vw; height: 60vh; } /* Briefcase */
+  .swiper-slide:nth-child(3) { width: 60vw; height: 60vh; } /* TV */
+  .swiper-slide:nth-child(4) { width: 60vw; height: 60vh; } /* Payphone */
   
   /* Responsive sizes for smaller screens */
   @media (max-width: 768px) {
-    .swiper-slide:nth-child(1) { width: 160px; height: auto; }
-    .swiper-slide:nth-child(2) { width: 220px; height: auto; }
-    .swiper-slide:nth-child(3) { width: 250px; height: auto; }
-    .swiper-slide:nth-child(4) { width: 140px; height: auto; }
+    .swiper-slide:nth-child(1) { width: 60vw; height: 60vh; }
+    .swiper-slide:nth-child(2) { width: 60vw; height: 60vh; }
+    .swiper-slide:nth-child(3) { width: 60vw; height: 60vh; }
+    .swiper-slide:nth-child(4) { width: 60vw; height: 60vh; }
   }
   
+  #continue-btn {
+    margin: 2rem 0;
+    padding: 0.75rem 2rem;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    background: transparent;
+    border: 2px solid #000;   /* default for light mode */
+    color: #000;              /* default for light mode */
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  #continue-btn:hover {
+    background: #000;
+    color: #fff;
+  }
+  
+  /* === Dark mode === */
+  body.dark-mode #continue-btn {
+    border-color: #00F5CC;
+    color: #00F5CC;
+  }
+  
+  body.dark-mode #continue-btn:hover {
+    background: #00F5CC;
+    color: #000;
+  }
+  
+
+  html {
+    scroll-behavior: smooth;
+  }
+
   /* === Gadget Images === */
   .swiper-slide img {
     display: block;
@@ -274,7 +319,7 @@
   
   .swiper-button-next,
   .swiper-button-prev {
-    color: #00F5CC;
+    color: #f50000;
   }
   
   #site-footer {
@@ -290,27 +335,64 @@
     border-color: #00F5CC;
     color: #00F5CC;
   }
+
+  /* === Dashboard CLI Section === */
   
-  .media-frame {
+  #dashboard-cli {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;     /* full screen CLI section */
+    padding-top: 20px;
+    background: transparent;
+  }
+  
+  .cli-tv-wrapper {
     position: relative;
-    display: block;  /* <a> is block so child video/image stack properly */
-  }
-  
-  .media-frame img {
-    display: block;
     width: 100%;
-    height: auto;
-    z-index: 2;
+    max-width: 950px;     /* or whatever works for your PNG */
+    aspect-ratio: 3 / 3 ;   /* keeps it proportional */
   }
   
-  .tv-static {
+  .cli-tv-inner {
     position: absolute;
-    top: 24%;    /* Adjust to match your TV screen area */
-    left: 28%;
-    width: 44%;
-    height: 40%;
-    object-fit: cover;
-    z-index: 1;
-    pointer-events: none;  /* Clicking goes through to the <a> */
+    top: 12%;   /* adjust to your screen cutout! */
+    left: 11%;
+    width: 80%;
+    height: 60%;
+    background: #000;      /* black background for the screen area */
+    color: #00F5CC;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 1rem;
+    overflow: hidden;
+    z-index: 1;            /* sits *behind* the PNG */
+    display: flex;
+    flex-direction: column;
   }
   
+  .cli-tv-img {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;            /* sits *in front* of the CLI */
+    pointer-events: none;  /* makes sure clicks pass through if needed */
+  }
+  
+  #cli-output p {
+    margin: 0.3rem 0;
+  }
+  
+  #cli-cursor {
+    display: inline-block;
+    font-weight: bold;
+    color: #00F5CC;
+    margin-left: 5px;
+  }
+
+  #back-to-top-btn {
+    width: 250px;     /* or any size you like */
+    height: 250px;
+    margin-top: 2rem;
+    cursor: pointer;
+  }
