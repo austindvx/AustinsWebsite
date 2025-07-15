@@ -277,7 +277,7 @@
   
     .swiper-slide {
       flex-shrink: 0;         /* ✅ Prevent squishing */
-      width: 80vw;            /* Responsive width */
+      width: 50vw;            /* Responsive width */
       height: auto;           /* Let height adjust naturally */
       display: flex;
       align-items: center;
