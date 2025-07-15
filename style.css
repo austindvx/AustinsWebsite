@@ -269,16 +269,23 @@
       height: auto; /* keep aspect ratio */
     }
     .swiper-container {
-      max-width: 100%;
-      overflow-x: auto;
+      flex: 1;                  /* grow to fill vertical space */
+      display: flex;
+      align-items: center;      /* center slides vertically */
+      width: 90%;
+      max-width: 1200px;
+      position: relative;       /* needed for arrows */
     }
   
     .swiper-wrapper {
-      flex-wrap: nowrap;
+      display: flex;
     }
   
     .swiper-slide {
-      flex-shrink: 0; /* prevent shrinking */
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;   /* NEW: let each slide grow vertically */
     }
     .swiper-slide img {
       width: 100%;
