@@ -261,47 +261,40 @@
   
   /* Responsive sizes for smaller screens */
   @media (max-width: 768px) {
-    .swiper-slide:nth-child(1),
-    .swiper-slide:nth-child(2),
-    .swiper-slide:nth-child(3),
-    .swiper-slide:nth-child(4) {
-      width: 80vw;  /* fit within viewport width! */
-      height: auto; /* keep aspect ratio */
+    #dashboard-carousel {
+      height: auto;           /* Let it grow naturally */
+      padding-top: 100px;     /* Headroom for sticky header */
     }
+  
     .swiper-container {
-      flex: 1;                  /* grow to fill vertical space */
-      display: flex;
-      align-items: center;      /* center slides vertically */
-      width: 90%;
-      max-width: 1200px;
-      position: relative;       /* needed for arrows */
+      max-width: 100%;
+      overflow-x: auto;       /* ✅ Prevent overflow */
     }
   
     .swiper-wrapper {
-      display: flex;
+      flex-wrap: nowrap;      /* Keep slides in a single row */
     }
   
     .swiper-slide {
+      flex-shrink: 0;         /* ✅ Prevent squishing */
+      width: 80vw;            /* Responsive width */
+      height: auto;           /* Let height adjust naturally */
       display: flex;
       align-items: center;
       justify-content: center;
-      height: 100%;   /* NEW: let each slide grow vertically */
     }
+  
     .swiper-slide img {
       width: 100%;
       height: auto;
-      object-fit: contain;
-    }
-  
-    #dashboard-carousel {
-      height: auto;   /* let it grow naturally */
-      padding-top: 100px; /* keep headroom under header */
+      object-fit: contain;    /* ✅ Maintain aspect ratio */
+      display: block;
     }
   
     #continue-btn {
       margin-top: 1rem;
     }
-  }
+  }  
 
   #continue-btn {
     margin: 2rem 0;
